@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="EmojiPicker" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -688,6 +689,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="480" height="270"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -703,15 +705,84 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="EmojiPicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KmZ-o1-KE2">
+                                <rect key="frame" x="20" y="60" width="440" height="166"/>
+                                <clipView key="contentView" drawsBackground="NO" id="0EE-Nb-U3h">
+                                    <rect key="frame" x="0.0" y="0.0" width="440" height="166"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView importsGraphics="NO" verticallyResizable="YES" findStyle="bar" continuousSpellChecking="YES" allowsUndo="YES" spellingCorrection="YES" grammarChecking="YES" smartInsertDelete="YES" id="P7e-sD-mhl">
+                                            <rect key="frame" x="0.0" y="0.0" width="440" height="166"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="440" height="166"/>
+                                            <size key="maxSize" width="476" height="10000000"/>
+                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                        </textView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Ism-uH-odd">
+                                    <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Ot0-9M-Yw3">
+                                    <rect key="frame" x="424" y="0.0" width="16" height="166"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mlf-xu-ktl">
+                                <rect key="frame" x="192" y="13" width="96" height="32"/>
+                                <buttonCell key="cell" type="push" title="Pick emoji" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WtB-75-ZDg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <segue destination="kZT-e4-pjr" kind="popover" popoverAnchorView="mlf-xu-ktl" popoverBehavior="t" preferredEdge="maxY" id="k4X-rp-szm"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hD8-ny-rfo">
+                                <rect key="frame" x="173" y="234" width="134" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Just a box to write in." id="QnJ-bl-LzW">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="KmZ-o1-KE2" firstAttribute="centerX" secondItem="mlf-xu-ktl" secondAttribute="centerX" id="6PA-QQ-M3f"/>
+                            <constraint firstItem="hD8-ny-rfo" firstAttribute="centerX" secondItem="KmZ-o1-KE2" secondAttribute="centerX" id="NHa-Qx-87Q"/>
+                            <constraint firstItem="KmZ-o1-KE2" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" symbolic="YES" id="Tff-V5-QHt"/>
+                            <constraint firstItem="hD8-ny-rfo" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="cfI-x2-3Tq"/>
+                            <constraint firstItem="KmZ-o1-KE2" firstAttribute="top" secondItem="hD8-ny-rfo" secondAttribute="bottom" constant="8" symbolic="YES" id="hAR-jl-CI8"/>
+                            <constraint firstItem="mlf-xu-ktl" firstAttribute="top" secondItem="KmZ-o1-KE2" secondAttribute="bottom" constant="20" symbolic="YES" id="iWD-eF-pqP"/>
+                            <constraint firstAttribute="trailing" secondItem="KmZ-o1-KE2" secondAttribute="trailing" constant="20" symbolic="YES" id="p1k-OH-c0h"/>
+                            <constraint firstAttribute="bottom" secondItem="mlf-xu-ktl" secondAttribute="bottom" constant="20" symbolic="YES" id="pSD-HO-eKy"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Bza-W8-cek">
+            <objects>
+                <viewController id="kZT-e4-pjr" sceneMemberID="viewController">
+                    <view key="view" id="OoJ-Y5-Tui">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="u2X-Qi-Ng8" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="1074"/>
         </scene>
     </scenes>
 </document>
