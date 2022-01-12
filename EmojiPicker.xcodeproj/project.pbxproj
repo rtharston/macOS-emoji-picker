@@ -14,6 +14,9 @@
 		0035D63E278E98A60040923A /* EmojiPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0035D63D278E98A60040923A /* EmojiPickerTests.swift */; };
 		0035D648278E98A60040923A /* EmojiPickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0035D647278E98A60040923A /* EmojiPickerUITests.swift */; };
 		0035D64A278E98A60040923A /* EmojiPickerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0035D649278E98A60040923A /* EmojiPickerUITestsLaunchTests.swift */; };
+		00F49278278EA13A00AAA463 /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F49277278EA13A00AAA463 /* EmojiPickerViewController.swift */; };
+		00F4927E278EAAAF00AAA463 /* EmojiCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F4927C278EAAAF00AAA463 /* EmojiCollectionViewItem.xib */; };
+		00F49280278EAC0700AAA463 /* EmojiPickerCollectionSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F4927F278EAC0700AAA463 /* EmojiPickerCollectionSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		0035D643278E98A60040923A /* EmojiPickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmojiPickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0035D647278E98A60040923A /* EmojiPickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerUITests.swift; sourceTree = "<group>"; };
 		0035D649278E98A60040923A /* EmojiPickerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		00F49277278EA13A00AAA463 /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
+		00F4927C278EAAAF00AAA463 /* EmojiCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiCollectionViewItem.xib; sourceTree = "<group>"; };
+		00F4927F278EAC0700AAA463 /* EmojiPickerCollectionSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerCollectionSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,9 @@
 				0035D62F278E98A60040923A /* Assets.xcassets */,
 				0035D631278E98A60040923A /* Main.storyboard */,
 				0035D634278E98A60040923A /* EmojiPicker.entitlements */,
+				00F49277278EA13A00AAA463 /* EmojiPickerViewController.swift */,
+				00F4927C278EAAAF00AAA463 /* EmojiCollectionViewItem.xib */,
+				00F4927F278EAC0700AAA463 /* EmojiPickerCollectionSource.swift */,
 			);
 			path = EmojiPicker;
 			sourceTree = "<group>";
@@ -226,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0035D630278E98A60040923A /* Assets.xcassets in Resources */,
+				00F4927E278EAAAF00AAA463 /* EmojiCollectionViewItem.xib in Resources */,
 				0035D633278E98A60040923A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +261,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00F49280278EAC0700AAA463 /* EmojiPickerCollectionSource.swift in Sources */,
+				00F49278278EA13A00AAA463 /* EmojiPickerViewController.swift in Sources */,
 				0035D62E278E98A50040923A /* ViewController.swift in Sources */,
 				0035D62C278E98A50040923A /* AppDelegate.swift in Sources */,
 			);
