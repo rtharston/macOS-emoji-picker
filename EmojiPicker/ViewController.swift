@@ -9,6 +9,8 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet var writingBox: NSTextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,12 @@ class ViewController: NSViewController {
         }
     }
 
-
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EmojiPickerPopoverSeque" {
+            if let emojiPickerViewController = segue.destinationController as? EmojiPickerViewController {
+                emojiPickerViewController.textToAppendTo = writingBox
+            }
+        }
+    }
 }
 

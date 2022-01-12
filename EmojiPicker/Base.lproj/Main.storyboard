@@ -743,7 +743,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="kZT-e4-pjr" kind="popover" popoverAnchorView="mlf-xu-ktl" popoverBehavior="t" preferredEdge="maxY" id="k4X-rp-szm"/>
+                                    <segue destination="kZT-e4-pjr" kind="popover" identifier="EmojiPickerPopoverSeque" popoverAnchorView="mlf-xu-ktl" popoverBehavior="t" preferredEdge="maxY" id="k4X-rp-szm"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hD8-ny-rfo">
@@ -766,6 +766,9 @@
                             <constraint firstAttribute="bottom" secondItem="mlf-xu-ktl" secondAttribute="bottom" constant="20" symbolic="YES" id="pSD-HO-eKy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="writingBox" destination="P7e-sD-mhl" id="FI7-PJ-uI8"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
