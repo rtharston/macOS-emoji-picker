@@ -40,6 +40,8 @@ extension EmojiPickerViewController: NSCollectionViewDelegate {
                 // This isn't how I'd like to do it, but this lets the user click the same emoji more than once
                 collectionView.reloadData()
             }
+            
+            dismiss(self) // I'd rather figure out how to click the same emoji multiple times
         }
     }
 }

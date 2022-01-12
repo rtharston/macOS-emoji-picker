@@ -17,6 +17,7 @@
 		00F49278278EA13A00AAA463 /* EmojiPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F49277278EA13A00AAA463 /* EmojiPickerViewController.swift */; };
 		00F4927E278EAAAF00AAA463 /* EmojiCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00F4927C278EAAAF00AAA463 /* EmojiCollectionViewItem.xib */; };
 		00F49280278EAC0700AAA463 /* EmojiPickerCollectionSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F4927F278EAC0700AAA463 /* EmojiPickerCollectionSource.swift */; };
+		00F49282278EC78F00AAA463 /* EmojiCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F49281278EC78F00AAA463 /* EmojiCollectionViewItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		00F49277278EA13A00AAA463 /* EmojiPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerViewController.swift; sourceTree = "<group>"; };
 		00F4927C278EAAAF00AAA463 /* EmojiCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmojiCollectionViewItem.xib; sourceTree = "<group>"; };
 		00F4927F278EAC0700AAA463 /* EmojiPickerCollectionSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerCollectionSource.swift; sourceTree = "<group>"; };
+		00F49281278EC78F00AAA463 /* EmojiCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCollectionViewItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				0035D634278E98A60040923A /* EmojiPicker.entitlements */,
 				00F49277278EA13A00AAA463 /* EmojiPickerViewController.swift */,
 				00F4927C278EAAAF00AAA463 /* EmojiCollectionViewItem.xib */,
+				00F49281278EC78F00AAA463 /* EmojiCollectionViewItem.swift */,
 				00F4927F278EAC0700AAA463 /* EmojiPickerCollectionSource.swift */,
 			);
 			path = EmojiPicker;
@@ -265,6 +268,7 @@
 				00F49278278EA13A00AAA463 /* EmojiPickerViewController.swift in Sources */,
 				0035D62E278E98A50040923A /* ViewController.swift in Sources */,
 				0035D62C278E98A50040923A /* AppDelegate.swift in Sources */,
+				00F49282278EC78F00AAA463 /* EmojiCollectionViewItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

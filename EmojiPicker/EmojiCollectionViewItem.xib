@@ -5,35 +5,37 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="NSCollectionViewItem">
+        <customObject id="-2" userLabel="File's Owner" customClass="EmojiCollectionViewItem" customModule="EmojiPicker" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <collectionViewItem id="JzU-us-6nd">
+        <collectionViewItem id="JzU-us-6nd" customClass="EmojiCollectionViewItem" customModule="EmojiPicker" customModuleProvider="target">
             <connections>
-                <outlet property="textField" destination="L6H-uV-ETK" id="pGo-YP-D6e"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="Yum-aQ-BDL"/>
             </connections>
         </collectionViewItem>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+            <rect key="frame" x="0.0" y="0.0" width="38" height="30"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L6H-uV-ETK">
-                    <rect key="frame" x="-4" y="-2" width="38" height="35"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" title="😆" id="HNx-ez-jo9">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OBB-LE-pxW">
+                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="4V2-Qa-S2d"/>
+                        <constraint firstAttribute="width" constant="30" id="7A6-tI-bD5"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" title="😆" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="vOl-WP-Zdn">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="30"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                    </buttonCell>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="L6H-uV-ETK" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="DHx-gH-CM3"/>
-                <constraint firstItem="L6H-uV-ETK" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="YZa-29-A5z"/>
+                <constraint firstItem="OBB-LE-pxW" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="2rX-h0-zae"/>
+                <constraint firstItem="OBB-LE-pxW" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="vMR-Wj-AUc"/>
             </constraints>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </customView>

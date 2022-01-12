@@ -44,11 +44,17 @@ class EmojiPickerCollectionSource: NSObject, NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
-        let emojiItem = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("EmojiCollectionViewItem"), for: indexPath)
+        let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("EmojiCollectionViewItem"), for: indexPath)
         
+        if let emojiItem = item as? EmojiCollectionViewItem {
+            
         if let field = emojiItem.textField, let emoji = emoji(at: indexPath) {
-            field.stringValue = emoji
+            emojiItem.button?.title = emoji
+            emojiItem.button?.action = 
+//            field.stringValue = emoji
         }
         return emojiItem
+        }
+        return item
     }
 }
