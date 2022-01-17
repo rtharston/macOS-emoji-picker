@@ -35,10 +35,7 @@ extension EmojiPickerViewController: NSCollectionViewDelegate {
                 print("User selected: \(selectedEmoji)")
                 
                 textToAppendTo?.insertText(selectedEmoji)
-                // None of the more logical ways I tried actually unselected the item
-                // so instead I tried reloading the data and voila, no selection...
-                // This isn't how I'd like to do it, but this lets the user click the same emoji more than once
-                collectionView.reloadData()
+                collectionView.deselectItems(at: indexPaths)
             }
         }
     }
