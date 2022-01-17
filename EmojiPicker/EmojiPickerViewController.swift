@@ -40,3 +40,9 @@ extension EmojiPickerViewController: NSCollectionViewDelegate {
         }
     }
 }
+
+extension EmojiPickerViewController : NSCollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+    NSSize(width: 0, height: 24)
+  }
+}

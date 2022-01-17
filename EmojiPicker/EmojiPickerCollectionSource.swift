@@ -8,39 +8,31 @@
 import Cocoa
 
 class EmojiPickerCollectionSource: NSObject, NSCollectionViewDataSource {
-    private let emojiCollection : [String] // TODO: think about how I can make this only populate once (and if it would be worth it)
+    private let emojiCollection : [EmojiSection] // TODO: think about how I can make this only populate once (and if it would be worth it)
     
     override init() {
-        // inspired by https://stackoverflow.com/a/53388482
-        // and https://stackoverflow.com/a/26171421
-        // fill the list with emoticons
-        var collection = [String]()
-        collection.reserveCapacity(0x1F64F-0x1F600+1)
-        for i in 0x1F600...0x1F64F {
-            guard let scalar = UnicodeScalar(i) else { continue }
-            let emoticon = String(scalar)
-            collection.append(emoticon)
+        if let emojiURL = Bundle.main.url(forResource: "emoji", withExtension: "json"),
+           let data = try? String(contentsOf: emojiURL).data(using: .utf8),
+           let emojiCollection = try? JSONDecoder().decode([EmojiSection].self, from: data) {
+            self.emojiCollection = emojiCollection
         }
-        print("number of emoji in available to picker: \(collection.count)")
-        print("capacity of array: \(collection.capacity)")
-        self.emojiCollection = collection
+        else {
+            self.emojiCollection = [EmojiSection]()
+        }
         
         super.init()
     }
     
     func emoji(at index: IndexPath) -> String? {
-        guard index.section == 0 else {
-            return nil
-        }
-        return emojiCollection[index.item]
+        emojiCollection[index.section].emojis[index.item].emoji
     }
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        1 // update this when supporting multiple sections of emojis; i.e. smileys, flags, etc
+        emojiCollection.count
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        emojiCollection.count
+        emojiCollection[section].emojis.count
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -51,4 +43,30 @@ class EmojiPickerCollectionSource: NSObject, NSCollectionViewDataSource {
         }
         return emojiItem
     }
+    
+    func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
+        //        if kind == NSCollectionView.elementKindSectionHeader {
+        let sectionHeader = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: EmojiCollectionViewSectionHeaderView.identifier, for: indexPath)
+        
+        if let emojiSectionHeader = sectionHeader as? EmojiCollectionViewSectionHeaderView {
+            
+            emojiSectionHeader.name.stringValue = emojiCollection[indexPath.section].title
+            
+            return emojiSectionHeader
+        }
+        
+        return sectionHeader
+        //        }
+    }
+}
+
+struct Emoji: Decodable {
+    let name : String
+    let emoji : String
+}
+
+struct EmojiSection: Decodable {
+    let title : String
+    let representativeEmoji : String
+    let emojis : [Emoji]
 }

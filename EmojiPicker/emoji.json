@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Smileys & People",
+        "representativeEmoji": "😀",
+        "emojis": [
+            {
+                "name": "grinning face",
+                "emoji": "😀"
+            },
+            {
+                "name": "grinning face with big eyes",
+                "emoji": "😃"
+            },
+            {
+                "name": "grinning face with smiling eyes",
+                "emoji": "😄"
+            },
+            {
+                "name": "beaming face with smiling eyes",
+                "emoji": "😁"
+            }
+        ]
+    },
+    {
+        "title": "Animals & Nature",
+        "representativeEmoji": "🐶",
+        "emojis": [
+            {
+                "name": "dog face",
+                "emoji": "🐶"
+            },
+            {
+                "name": "cat face",
+                "emoji": "🐱"
+            },
+            {
+                "name": "mouse face",
+                "emoji": "🐭"
+            }
+        ]
+    }
+]
