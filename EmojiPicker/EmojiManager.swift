@@ -9,6 +9,7 @@ import Foundation
 
 class EmojiManager {
     static let sharedInstance = EmojiManager()
+    static let searchEmojiIcon = "🔍"
     
     let emojiCollection : [EmojiSection]
     
@@ -23,7 +24,7 @@ class EmojiManager {
         }
     }
     
-    func emoji(matching: String) -> [Emoji] {
+    func emoji(matching: String) -> EmojiSection {
         var results = [Emoji]()
         
         for section in emojiCollection {
@@ -34,7 +35,7 @@ class EmojiManager {
             }
         }
         
-        return results
+        return EmojiSection(title: "Search Results", representativeEmoji: EmojiManager.searchEmojiIcon, emojis: results)
     }
 }
 

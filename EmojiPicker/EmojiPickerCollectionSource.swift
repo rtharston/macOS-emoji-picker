@@ -9,7 +9,7 @@ import Cocoa
 
 class EmojiPickerCollectionSource: NSObject, NSCollectionViewDataSource {
     
-    var searchResults = [Emoji]()
+    var searchResults : EmojiSection
     
     var searchString : String
     {
@@ -23,13 +23,17 @@ class EmojiPickerCollectionSource: NSObject, NSCollectionViewDataSource {
         searchResults = EmojiManager.sharedInstance.emoji(matching: searchString)
     }
     
-    func emoji(at index: IndexPath) -> String? {
+    func emojiSection(at sectionIndex: Int) -> EmojiSection? {
+        guard sectionIndex >= 0 && sectionIndex <= EmojiManager.sharedInstance.emojiCollection.count else {
+            return nil
+        }
+        
         // Section 0 is a pseudo-section to show search results
-        if index.section == 0 {
-            return searchResults[index.item].emoji
+        if sectionIndex == 0 {
+            return searchResults
         }
         else {
-            return EmojiManager.sharedInstance.emojiCollection[index.section - 1].emojis[index.item].emoji
+            return EmojiManager.sharedInstance.emojiCollection[sectionIndex - 1]
         }
     }
     
@@ -38,20 +42,14 @@ class EmojiPickerCollectionSource: NSObject, NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Section 0 is a pseudo-section to show search results
-        if section == 0 {
-            return searchResults.count
-        }
-        else {
-            return EmojiManager.sharedInstance.emojiCollection[section - 1].emojis.count
-        }
+        emojiSection(at: section)?.emojis.count ?? 0
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let emojiItem = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier("EmojiCollectionViewItem"), for: indexPath)
         
-        if let field = emojiItem.textField, let emoji = emoji(at: indexPath) {
-            field.stringValue = emoji
+        if let field = emojiItem.textField, let emojiSection = emojiSection(at: indexPath.section) {
+            field.stringValue = emojiSection.emojis[indexPath.item].emoji
         }
         return emojiItem
     }
@@ -60,13 +58,9 @@ class EmojiPickerCollectionSource: NSObject, NSCollectionViewDataSource {
         //        if kind == NSCollectionView.elementKindSectionHeader {
         let sectionHeader = collectionView.makeSupplementaryView(ofKind: kind, withIdentifier: EmojiCollectionViewSectionHeaderView.identifier, for: indexPath)
         
-        if let emojiSectionHeader = sectionHeader as? EmojiCollectionViewSectionHeaderView {
+        if let emojiSectionHeader = sectionHeader as? EmojiCollectionViewSectionHeaderView, let emojiSection = emojiSection(at: indexPath.section)  {
             
-            if indexPath.section == 0 {
-                emojiSectionHeader.name.stringValue = "Search Results"
-            } else {
-                emojiSectionHeader.name.stringValue = EmojiManager.sharedInstance.emojiCollection[indexPath.section - 1].title
-            }
+            emojiSectionHeader.name.stringValue = emojiSection.title
             
             return emojiSectionHeader
         }
