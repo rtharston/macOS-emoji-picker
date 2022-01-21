@@ -10,17 +10,15 @@ import Cocoa
 class EmojiPickerViewController: NSViewController {
     
     @IBOutlet weak var emojiCollectionView: NSCollectionView!
+    {
+        didSet {
+            emojiCollectionView.dataSource = emojiSource
+        }
+    }
     
     var textToAppendTo : NSText?
     
     let emojiSource = EmojiPickerCollectionSource()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-        
-        emojiCollectionView.dataSource = emojiSource
-    }
 }
 
 extension EmojiPickerViewController: NSCollectionViewDelegate {
