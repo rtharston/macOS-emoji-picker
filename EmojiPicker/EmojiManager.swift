@@ -22,6 +22,20 @@ class EmojiManager {
             self.emojiCollection = [EmojiSection]()
         }
     }
+    
+    func emoji(matching: String) -> [Emoji] {
+        var results = [Emoji]()
+        
+        for section in emojiCollection {
+            for e in section.emojis {
+                if e.name.contains(matching) {
+                    results.append(e)
+                }
+            }
+        }
+        
+        return results
+    }
 }
 
 struct Emoji: Decodable {

@@ -9,16 +9,42 @@ import Cocoa
 
 class EmojiPickerCollectionSource: NSObject, NSCollectionViewDataSource {
     
+    var searchResults = [Emoji]()
+    
+    var searchString : String
+    {
+        didSet {
+            searchResults = EmojiManager.sharedInstance.emoji(matching: searchString)
+        }
+    }
+    
+    override init() {
+        searchString = "eyes"
+        searchResults = EmojiManager.sharedInstance.emoji(matching: searchString)
+    }
+    
     func emoji(at index: IndexPath) -> String? {
-        EmojiManager.sharedInstance.emojiCollection[index.section].emojis[index.item].emoji
+        // Section 0 is a pseudo-section to show search results
+        if index.section == 0 {
+            return searchResults[index.item].emoji
+        }
+        else {
+            return EmojiManager.sharedInstance.emojiCollection[index.section - 1].emojis[index.item].emoji
+        }
     }
     
     func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        EmojiManager.sharedInstance.emojiCollection.count
+        EmojiManager.sharedInstance.emojiCollection.count + 1 // 1 for search section
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        EmojiManager.sharedInstance.emojiCollection[section].emojis.count
+        // Section 0 is a pseudo-section to show search results
+        if section == 0 {
+            return searchResults.count
+        }
+        else {
+            return EmojiManager.sharedInstance.emojiCollection[section - 1].emojis.count
+        }
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
@@ -36,7 +62,11 @@ class EmojiPickerCollectionSource: NSObject, NSCollectionViewDataSource {
         
         if let emojiSectionHeader = sectionHeader as? EmojiCollectionViewSectionHeaderView {
             
-            emojiSectionHeader.name.stringValue = EmojiManager.sharedInstance.emojiCollection[indexPath.section].title
+            if indexPath.section == 0 {
+                emojiSectionHeader.name.stringValue = "Search Results"
+            } else {
+                emojiSectionHeader.name.stringValue = EmojiManager.sharedInstance.emojiCollection[indexPath.section - 1].title
+            }
             
             return emojiSectionHeader
         }
